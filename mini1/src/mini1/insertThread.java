@@ -8,13 +8,13 @@ public class insertThread extends Thread{
 	}
 	
 	public void run() {
-		while(true) {
+		while(share.isOn) {
 			Obstacle obs = new Obstacle();
 			synchronized(share) {
 				share.obsArr.add(obs);
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -11,7 +11,7 @@ public class Obstacle {
 		Random rd = new Random();
 		x = rd.nextInt(30);
 		y = 0;
-		c = '|';
+		c = '▼';
 	}
 	
 	void fall() {
