@@ -21,8 +21,8 @@ public class OracleDB {
 		
 	public OracleDB() {
 		sc = new Scanner(System.in);
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String user = "sk", pw="123123";
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:XE";
+		String user = "cgi_7_0516_2", pw="smhrd2";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("Driver Loading Success");
