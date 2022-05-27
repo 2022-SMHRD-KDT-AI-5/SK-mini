@@ -6,7 +6,7 @@ public class Me {
 	char c;
 	
 	public Me() {
-		x = 15; // col
+		x = 10; // col
 		y = 14; // row
 		c = 'O';
 	}
@@ -17,7 +17,7 @@ public class Me {
 	}
 	
 	void right() {
-		if (x <= 28)
+		if (x <= 18)
 			x += 1;
 	}
 }

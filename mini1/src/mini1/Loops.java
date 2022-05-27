@@ -1,5 +1,6 @@
 package mini1;
 
+import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -30,7 +31,7 @@ public class Loops extends Thread{
 	
 	int menu2() {
 		System.out.println("-------------------------");
-		System.out.println("\n\n\n1. Logout \n\n2. Start\n\n3. My Records\n\n4. Withdrawal\n\n5.Exit\n\n\n");
+		System.out.println("\n\n\n1. Logout \n\n2. Start\n\n3. My Records\n\n4. Withdrawal\n\n5. Exit\n\n\n");
 		System.out.println("-------------------------");
 		System.out.print("Select >> ");
 		int n = sc.nextInt();
@@ -73,15 +74,27 @@ public class Loops extends Thread{
 					loop2 = false;
 					break;
 				case 2:
-					Client cli = new Client(share);
-					cli.start();
+					insertThread isthread = new insertThread(share);
+					updateThread uthread = new updateThread(share);
+					printThread pthread = new printThread(share);
+					inputThread ipthread = new inputThread(share);
+					timeThread tthread = new timeThread(share);
+					tthread.start();
+					isthread.start();
+					uthread.start();
+					pthread.start();
+					ipthread.start();
 					try {
-						cli.join();
+						ipthread.join();
+						isthread.join();
+						uthread.join();
+						pthread.join();
+						tthread.join();
 						
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
+					}share.reset();
 					break;
 				case 3:
 					db.user_records();

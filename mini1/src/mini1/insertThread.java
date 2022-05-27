@@ -14,7 +14,7 @@ public class insertThread extends Thread{
 				share.obsArr.add(obs);
 			}
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1000 - 100*(share.level));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

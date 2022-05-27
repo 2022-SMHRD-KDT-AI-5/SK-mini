@@ -45,16 +45,15 @@ SharedArea share;
 	public void run() {
 		while(share.isOn) {
 			synchronized(share) {
-				
-				System.out.println("-----------------------------");
+				System.out.println("--------------------");
 				for (int i=0; i<share.background.length; i++) {
 					for (int j=0; j<share.background[0].length; j++) {
 						System.out.print(share.background[i][j]);
 					}System.out.println();
-				}System.out.println("-----------------------------");
-			}update();
+				}System.out.println("--------------------");
+			}
 			try {
-				Thread.sleep(100);
+				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

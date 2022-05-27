@@ -9,7 +9,7 @@ public class Obstacle {
 	
 	public Obstacle() {
 		Random rd = new Random();
-		x = rd.nextInt(30);
+		x = rd.nextInt(20);
 		y = 0;
 		c = '▼';
 	}

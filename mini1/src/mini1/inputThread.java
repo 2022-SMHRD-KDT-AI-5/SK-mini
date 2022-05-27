@@ -1,5 +1,6 @@
 package mini1;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class inputThread extends Thread{
@@ -23,10 +24,8 @@ public class inputThread extends Thread{
 			}try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			
 			}
-		}sc.close();
+		}
 	}
 }
