@@ -27,7 +27,6 @@ public class Loops extends Thread{
 			reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -39,6 +38,8 @@ public class Loops extends Thread{
 		System.out.println("-------------------------");
 		System.out.print("Select >> ");
 		String select = sc.next();
+		if (!select.equals("1") || !select.equals("2") || !select.equals("3")) 
+			return 0;
 		System.out.println("\n");
 		writer.println(select);
 		writer.flush();
@@ -52,6 +53,8 @@ public class Loops extends Thread{
 		System.out.println("-------------------------");
 		System.out.print("Select >> ");
 		String select = sc.next();
+		if (!select.equals("1") || !select.equals("2") || !select.equals("3") && !select.equals("4") && !select.equals("5")) 
+			return 0;
 		System.out.println("\n");
 		writer.println(select);
 		writer.flush();
@@ -68,11 +71,12 @@ public class Loops extends Thread{
 		try {
 		while (loop) {
 			while (loop1) {
-				n = menu1(); // write 1
-				reader.readLine(); // read 1
+				n = menu1();
+				if (n == 0) continue;
+				reader.readLine(); 
 				switch (n) {
 				case 1: 
-					writer.println(oq.Login()); // write2
+					writer.println(oq.Login()); 
 					writer.flush();
 					String[] result = reader.readLine().split(",");
 					if (result[0].equals("true")) {
@@ -96,12 +100,15 @@ public class Loops extends Thread{
 				}
 			}
 			while (loop2) {
-				n = menu2(); // write 1
+				n = menu2(); 
+				if (n == 0) continue;
 				switch (n) {
 				case 1:
 					loop1 = true;
 					loop2 = false;
-					reader.readLine(); // read 1
+					reader.readLine(); 
+					id = null;
+					highScore = 0;
 					break;
 				case 2:
 					ClientThread cli = new ClientThread(reader, writer);
@@ -110,7 +117,6 @@ public class Loops extends Thread{
 						cli.join();
 						
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					int score = Integer.parseInt(reader.readLine());

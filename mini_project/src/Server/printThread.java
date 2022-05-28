@@ -4,11 +4,11 @@ package Server;
 import java.util.Arrays;
 import java.util.Random;
 
-public class word_update extends Thread{
+public class printThread extends Thread{
 	SharedArea share;
 	
 	
-	public word_update(SharedArea share) {
+	public printThread(SharedArea share) {
 		super();
 		this.share = share;
 	}

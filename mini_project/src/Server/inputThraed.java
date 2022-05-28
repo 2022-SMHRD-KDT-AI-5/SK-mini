@@ -5,12 +5,12 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class input extends Thread{
+public class inputThraed extends Thread{
 	SharedArea share;
 	BufferedReader reader;
 	PrintWriter writer;
 	
-	public input(SharedArea share, BufferedReader reader, PrintWriter writer) {
+	public inputThraed(SharedArea share, BufferedReader reader, PrintWriter writer) {
 		super();
 		this.share = share;
 		this.reader = reader;

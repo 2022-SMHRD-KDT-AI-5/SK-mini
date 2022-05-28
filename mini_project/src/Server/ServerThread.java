@@ -12,7 +12,7 @@ public class ServerThread extends Thread {
 	BufferedReader reader;
 	PrintWriter writer;
 	SharedArea share;
-	word_update wt;
+	printThread wt;
 	backUpdate bt;
 	OracleDB db;
 	String sql;
@@ -26,8 +26,6 @@ public class ServerThread extends Thread {
 		this.socket = sock;
 		this.share = share;
 		this.db = db;
-		this.wt = wt;
-		this.bt = bt;
 		try {
 			reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
@@ -46,13 +44,13 @@ public class ServerThread extends Thread {
 		try {
 			while (loop) {
 				while (loop1) {
-					n = Integer.parseInt(reader.readLine()); // read 1
-					writer.println(""); // write 1
+					n = Integer.parseInt(reader.readLine());
+					writer.println(""); 
 					writer.flush();
-					switch (n) { // 1.login 2.sign up 3.exit
+					switch (n) { 
 					case 1:
-						String loginAnswer = db.Login(reader.readLine()); // read 2
-						writer.println(loginAnswer); // write 2
+						String loginAnswer = db.Login(reader.readLine());
+						writer.println(loginAnswer);
 						writer.flush();
 						if (loginAnswer.split(",")[0].equals("true")) {
 							loop1 = false;
@@ -72,20 +70,20 @@ public class ServerThread extends Thread {
 						break;
 					}
 				}
-				while (loop2) { // 1.logout 2.start 3.my record 4.scoreboard
-					n = Integer.parseInt(reader.readLine()); // read 1
+				while (loop2) { 
+					n = Integer.parseInt(reader.readLine()); 
 					switch (n) {
 					case 1:
-						writer.println(""); // write 1
+						writer.println("");
 						writer.flush();
 						db.Logout();
 						loop1 = true;
 						loop2 = false;
 						break;
 					case 2:
-						word_update wut = new word_update(share);
+						printThread wut = new printThread(share);
 						backUpdate but = new backUpdate(share);
-						input it = new input(share, reader, writer);
+						inputThraed it = new inputThraed(share, reader, writer);
 						wut.start();
 						but.start();
 						it.start();
@@ -95,7 +93,6 @@ public class ServerThread extends Thread {
 							wut.join();
 							
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} 
 						writer.println(Integer.toString(share.score));

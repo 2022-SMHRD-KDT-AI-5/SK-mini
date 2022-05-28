@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class client {
+public class Client {
 	public static void main(String[] args) {
 		SharedClient share = new SharedClient();
 		

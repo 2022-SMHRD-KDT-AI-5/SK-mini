@@ -15,7 +15,7 @@ public class Server {
 				ArrayList<String> words = db.get_words();
 				SharedArea share = new SharedArea(words);
 				
-				word_update wt = new word_update(share);
+				printThread wt = new printThread(share);
 				backUpdate bt = new backUpdate(share);
 				
 				ServerThread st = new ServerThread(socket, share, db);
