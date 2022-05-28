@@ -13,16 +13,14 @@ public class Loops extends Thread{
 	String id;
 	int highScore;
 	OracleQuery oq;
-	SharedClient share;
 	Socket socket;
 	BufferedReader reader;
 	PrintWriter writer;
 	
-	public Loops(SharedClient share, Socket socket) {
+	public Loops(Socket socket) {
 		this.socket = socket;
 		sc = new Scanner(System.in);
 		oq = new OracleQuery();
-		this.share = share; 
 		try {
 			reader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			writer = new PrintWriter(new OutputStreamWriter(this.socket.getOutputStream()), true);
@@ -38,7 +36,7 @@ public class Loops extends Thread{
 		System.out.println("-------------------------");
 		System.out.print("Select >> ");
 		String select = sc.next();
-		if (!select.equals("1") || !select.equals("2") || !select.equals("3")) 
+		if (!select.equals("1") && !select.equals("2") && !select.equals("3")) 
 			return 0;
 		System.out.println("\n");
 		writer.println(select);
@@ -53,7 +51,7 @@ public class Loops extends Thread{
 		System.out.println("-------------------------");
 		System.out.print("Select >> ");
 		String select = sc.next();
-		if (!select.equals("1") || !select.equals("2") || !select.equals("3") && !select.equals("4") && !select.equals("5")) 
+		if (!select.equals("1") && !select.equals("2") && !select.equals("3") && !select.equals("4") && !select.equals("5")) 
 			return 0;
 		System.out.println("\n");
 		writer.println(select);
@@ -120,8 +118,8 @@ public class Loops extends Thread{
 						e.printStackTrace();
 					}
 					int score = Integer.parseInt(reader.readLine());
-					if (share.highScore < score) {
-						share.highScore = score;
+					if (highScore < score) {
+						highScore = score;
 						writer.println(oq.Update_Hidghscore(id, score));
 						writer.flush();
 						reader.readLine();

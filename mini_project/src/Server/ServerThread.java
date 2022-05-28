@@ -136,15 +136,6 @@ public class ServerThread extends Thread {
 		}
 	}
 
-	void check(String s) {
-		for (int i = 0; i < share.woArr.size(); i++) {
-			if (share.woArr.get(i).get_word().equals(s)) {
-				share.woArr.remove(i);
-				share.score += 1;
-			}
-		}
-	}
-
 	public void run() {
 		try {
 			loop();

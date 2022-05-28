@@ -5,12 +5,10 @@ import java.net.UnknownHostException;
 
 public class Client {
 	public static void main(String[] args) {
-		SharedClient share = new SharedClient();
-		
 		try {
 			Socket socket;
 			socket = new Socket("localhost", 10010);
-			Loops loop = new Loops(share, socket);
+			Loops loop = new Loops(socket);
 			loop.start();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
