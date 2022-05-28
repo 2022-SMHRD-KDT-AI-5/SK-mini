@@ -81,16 +81,16 @@ public class ServerThread extends Thread {
 						loop2 = false;
 						break;
 					case 2:
-						printThread wut = new printThread(share);
-						backUpdate but = new backUpdate(share);
+						printThread pt = new printThread(share);
+						updateThread ut = new updateThread(share);
 						inputThraed it = new inputThraed(share, reader, writer);
-						wut.start();
-						but.start();
+						pt.start();
+						ut.start();
 						it.start();
 						try {
 							it.join();
-							but.join();
-							wut.join();
+							ut.join();
+							pt.join();
 							
 						} catch (InterruptedException e) {
 							e.printStackTrace();
@@ -118,7 +118,7 @@ public class ServerThread extends Thread {
 						writer.flush();
 						break;
 					case 4:
-						db.show_scoreboard(reader.readLine());
+						db.show_leaderboard(reader.readLine());
 						writer.println("");
 						writer.flush();
 						break;

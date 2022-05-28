@@ -134,7 +134,7 @@ public class Loops extends Thread{
 					reader.readLine();
 					break;
 				case 4:
-					writer.println(oq.show_scoreboard());
+					writer.println(oq.show_leaderboard());
 					writer.flush();
 					reader.readLine();
 					break;

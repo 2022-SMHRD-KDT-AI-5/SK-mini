@@ -94,19 +94,6 @@ public class OracleDB {
 		}
 	}
 	
-//	void Update_Hidghscore(int score) {
-//		System.out.println(id + " " + highScore);
-//		try {
-//			if (score > highScore) {
-//				sql = "update user_info set high_score=" + score + " where user_id='" + id + "'";
-//				pstmt = conn.prepareStatement(sql);
-//				pstmt.executeUpdate();
-//			}
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//	}
-	
 	void Update_Records(String sql) {
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -116,7 +103,7 @@ public class OracleDB {
 		}
 	}
 	
-	void show_scoreboard(String sql) {
+	void show_leaderboard(String sql) {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

@@ -40,7 +40,7 @@ public class OracleQuery {
 		return sql;
 	}
 	
-	String show_scoreboard() {
+	String show_leaderboard() {
 		sql = "select rownum, user_id, high_score from (select user_id, high_score from user_info order by high_score desc)";
 		return sql;	
 	}
